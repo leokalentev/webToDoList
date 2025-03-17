@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Список задач</h1>
+
+      <div class="task-wrapper">
+        <p>Новая задача</p>
+        <input type="text" placeholder="Название задачи..." />
+        <button class="add-new-task-button">+ Добавить</button>
+      </div>
+
+      <ul class="task-list">
+        <li class="backlog-section task-column">
+          <span class="task-title">Бэклог</span>
+          <ul>
+            <li class="task-item">Выучить JS</li>
+            <li class="task-item">Выучить React</li>
+            <li class="task-item">Сделать домашку</li>
+          </ul>
+        </li>
+
+        <li class="progress-section task-column">
+          <span class="task-title">В процессе</span>
+          <ul>
+            <li class="task-item">Выпить смузи</li>
+            <li class="task-item">Попить воды</li>
+          </ul>
+        </li>
+
+        <li class="ready-section task-column">
+          <span class="task-title">Готово</span>
+          <ul>
+            <li class="task-item">Позвонить маме</li>
+            <li class="task-item">Погладить кота</li>
+          </ul>
+        </li>
+
+        <li class="trash-section task-column">
+          <span class="task-title">Корзина</span>
+          <ul>
+            <li class="task-item">Сходить погулять</li>
+            <li class="task-item">Прочитать Войну и Мир</li>
+          </ul>
+          <button class="clear-button">✕ Очистить</button>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
