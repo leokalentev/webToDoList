@@ -59,21 +59,26 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  gap: 20px;
+  padding: 20px;
 }
 
 .task-column {
-  display: flex;
-  flex: 100%;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex: 1;
+  min-width: 220px;
+  max-width: 25%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .tasks-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  margin: 50px 20px;
   list-style-type: none;
-  padding: 10px 15px;
 }
 
 .task-item {
@@ -87,22 +92,6 @@ h1 {
   padding: 10px 15px;
   border-radius: 10px;
   margin: 10px 20px 10px;
-}
-
-.task-column {
-  flex: 1;
-  margin: 0 10px;
-  min-width: 200px;
-  padding: 10px;
-}
-
-.task-sections {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 .backlog-section .task-title {
