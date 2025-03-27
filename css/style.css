@@ -3,6 +3,7 @@ body {
   background-color: #f0f7ff;
   margin: 0;
   padding: 0;
+  min-width: 320px;
 }
 
 h1 {
@@ -12,7 +13,7 @@ h1 {
   margin: 0;
 }
 
-.task-wrapper {
+.add-task {
   background-color: #fff;
   padding: 30px;
   border-radius: 10px;
@@ -20,14 +21,15 @@ h1 {
   margin: 50px 50px 20px 70px;
 }
 
-.task-wrapper p {
+.add-task label {
+  display: block;
   font-size: 25px;
   font-weight: bold;
   padding: 10px 0 15px;
   margin: 0;
 }
 
-.task-wrapper input {
+.add-task input {
   padding: 10px 30px 10px 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -35,25 +37,43 @@ h1 {
   margin-right: 5px;
 }
 
-.task-wrapper button {
+.add-new-task-button {
   background-color: #3b82f6;
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 10px 50px 10px 10px;
+  padding: 10px 20px;
   cursor: pointer;
 }
 
-.task-list {
+.taskboard {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 0;
-  margin: 50px;
+  margin: 50px 20px;
   list-style-type: none;
-  justify-content: left;
 }
 
-ul {
+.task-sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.task-column {
+  flex: 1;
+  margin: 0 10px;
+  min-width: 200px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.tasks-container {
   list-style-type: none;
   padding: 10px 15px;
 }
@@ -68,7 +88,23 @@ ul {
 .task-title {
   padding: 10px 15px;
   border-radius: 10px;
-  margin: 10px 20px;
+  margin: 10px 20px 10px;
+}
+
+.task-column {
+  flex: 1;
+  margin: 0 10px;
+  min-width: 200px;
+  padding: 10px;
+}
+
+.task-sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .backlog-section .task-title {
@@ -113,6 +149,6 @@ ul {
   border: none;
   border-radius: 8px;
   padding: 15px 100px;
-  margin: 0 0 0 20px;
+  margin: 0px 0px 0px 20px;
   cursor: pointer;
 }
