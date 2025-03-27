@@ -65,12 +65,10 @@ h1 {
 }
 
 .task-column {
-  flex: 1;
-  margin: 0 10px;
-  min-width: 200px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  padding: 10px;
+  display: flex;
+  flex: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .tasks-container {
