@@ -1,59 +1,50 @@
 import HeaderComponent from "./view/header-component.js";
 import TaskFormComponent from "./view/task-form-component.js";
 import TaskBoardComponent from "./view/task-board-component.js";
-import TaskComponent from "./view/task-component.js";
-import { render, RenderPosition } from "./framework/render.js";
+import TaskListComponent from "./view/task-list-component.js";
+import TaskItemComponent from "./view/task-item-component.js";
+import { RenderPosition, render } from "./framework/render.js";
 
-const bodyElement = document.querySelector(".board-app");
-const mainElement = document.querySelector(".board-app__main");
+const bodyContainer = document.querySelector(".board-app");
 const addTaskSection = document.querySelector(".add-task");
-const taskboardSection = document.querySelector(".taskboard");
+const taskBoardSection = document.querySelector(".taskboard");
 
 const headerComponent = new HeaderComponent();
-render(headerComponent, mainElement, RenderPosition.BEFOREBEGIN);
+render(headerComponent, bodyContainer, RenderPosition.BEFOREBEGIN);
 
 const taskFormComponent = new TaskFormComponent();
-render(taskFormComponent, addTaskSection);
+render(taskFormComponent, addTaskSection, RenderPosition.BEFOREEND);
 
-const taskBoardComponent = new TaskBoardComponent();
-render(taskBoardComponent, taskboardSection);
+const taskBoard = new TaskBoardComponent();
+render(taskBoard, taskBoardSection, RenderPosition.BEFOREEND);
 
-const backlogTasks = ["Выучить JS", "Выучить React", "Сделать домашку"];
-const progressTasks = ["Выпить смузи", "Попить воды"];
-const readyTasks = ["Позвонить маме", "Погладить кота"];
-const trashTasks = ["Сходить погулять", "Прочитать Войну и Мир"];
+const taskListContainer = taskBoard.getElement().querySelector(".task-list");
 
-const taskBoardElement = taskBoardComponent.getElement();
+const titleMapping = {
+  Бэклог: "backlog",
+  "В процессе": "in-progress",
+  Готово: "completed",
+  Корзина: "trash",
+};
 
-const backlogContainer = taskBoardElement.querySelector(
-  ".backlog-section .tasks-container"
-);
-const progressContainer = taskBoardElement.querySelector(
-  ".progress-section .tasks-container"
-);
-const readyContainer = taskBoardElement.querySelector(
-  ".ready-section .tasks-container"
-);
-const trashContainer = taskBoardElement.querySelector(
-  ".trash-section .tasks-container"
-);
-
-backlogTasks.forEach((taskText) => {
-  const taskComponent = new TaskComponent(taskText);
-  render(taskComponent, backlogContainer);
+const russianTitles = ["Бэклог", "В процессе", "Готово", "Корзина"];
+const taskLists = russianTitles.map((title) => {
+  const englishTitle =
+    titleMapping[title] || title.toLowerCase().replace(/\s+/g, "-");
+  return new TaskListComponent(title, englishTitle);
 });
 
-progressTasks.forEach((taskText) => {
-  const taskComponent = new TaskComponent(taskText);
-  render(taskComponent, progressContainer);
-});
+taskLists.forEach((taskList) => {
+  render(taskList, taskListContainer, RenderPosition.BEFOREEND);
+  const taskUl = taskList.getElement().querySelector("ul");
+  const tasks = [
+    new TaskItemComponent("Выучить JS"),
+    new TaskItemComponent("Выучить React"),
+    new TaskItemComponent("Сделать домашку"),
+    new TaskItemComponent("Позвонить маме"),
+  ];
 
-readyTasks.forEach((taskText) => {
-  const taskComponent = new TaskComponent(taskText);
-  render(taskComponent, readyContainer);
-});
-
-trashTasks.forEach((taskText) => {
-  const taskComponent = new TaskComponent(taskText);
-  render(taskComponent, trashContainer);
+  tasks.forEach((task) => {
+    render(task, taskUl, RenderPosition.BEFOREEND);
+  });
 });
