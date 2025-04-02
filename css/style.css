@@ -43,15 +43,6 @@ h1 {
   cursor: pointer;
 }
 
-.task-board {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0;
-  margin: 50px 20px;
-  list-style-type: none;
-}
-
 .task-list {
   display: flex;
   flex: 100%;
@@ -59,7 +50,7 @@ h1 {
   justify-content: space-between;
 }
 
-.task-list li.column {
+.task-list li.task-column {
   flex: 0 0 25%;
   max-width: 25%;
   box-sizing: border-box;
@@ -76,6 +67,9 @@ ul {
   border-radius: 8px;
   margin: 10px 10px 10px 5px;
   padding: 20px 100px 20px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .task-title {
@@ -128,4 +122,19 @@ ul {
   padding: 15px 100px;
   margin: 0px 0px 0px 20px;
   cursor: pointer;
+}
+
+.task__edit {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.task__edit::before {
+  content: "/";
+  display: inline-block;
+  transform: rotate(45deg);
 }

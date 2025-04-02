@@ -5,7 +5,7 @@ function createTaskListComponentTemplate(title, className) {
   return `
     <li class="task-column ${className}">
       <span class="task-title">${title}</span>
-      <ul></ul>
+      <ul class="task-list"></ul> <!-- Убедитесь, что ul есть -->
       ${isTrash ? `<button class="clear-trash-button">✕ Очистить</button>` : ""}
     </li>
   `;
