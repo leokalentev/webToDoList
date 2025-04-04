@@ -1,9 +1,10 @@
 import TaskBoardComponent from "../view/task-board-component.js";
 import TaskListComponent from "../view/task-list-component.js";
 import TaskItemComponent from "../view/task-item-component.js";
+import DeleteButton from "../view/delete-button.js";
 import { render } from "../framework/render.js";
 import { tasksModel } from "../model/task-model.js";
-import { StatusLabel } from "../const.js";
+import { Status } from "../const.js";
 
 export default class TasksBoardPresenter {
   constructor({ boardContainer }) {
@@ -17,17 +18,9 @@ export default class TasksBoardPresenter {
 
     const allTasks = this.tasksModel.getTasks();
 
-    const groupedTasks = {};
-    allTasks.forEach((task) => {
-      if (!groupedTasks[task.status]) {
-        groupedTasks[task.status] = [];
-      }
-      groupedTasks[task.status].push(task);
-    });
-
-    Object.entries(groupedTasks).forEach(([status, tasksInStatus]) => {
-      const statusName = StatusLabel[status];
-      const taskListComponent = new TaskListComponent(statusName, status);
+    Object.values(Status).forEach(({ key, label }) => {
+      const tasksInStatus = allTasks.filter((task) => task.status === key);
+      const taskListComponent = new TaskListComponent(label, key);
       render(
         taskListComponent,
         taskBoardComponent.getElement().querySelector(".task-list")
@@ -41,6 +34,10 @@ export default class TasksBoardPresenter {
         const taskItemComponent = new TaskItemComponent({ task });
         render(taskItemComponent, taskListContainer);
       });
+
+      if (key === Status.TRASH.key) {
+        render(new DeleteButton(), taskListComponent.getElement());
+      }
     });
   }
 }

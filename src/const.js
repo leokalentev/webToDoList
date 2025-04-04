@@ -1,13 +1,6 @@
 export const Status = {
-  BACKLOG: "backlog",
-  IN_PROGRESS: "in-progress",
-  COMPLETED: "completed",
-  TRASH: "trash",
-};
-
-export const StatusLabel = {
-  [Status.BACKLOG]: "Бэклог",
-  [Status.IN_PROGRESS]: "В процессе",
-  [Status.COMPLETED]: "Готово",
-  [Status.TRASH]: "Корзина",
+  BACKLOG: { key: "backlog", label: "Бэклог" },
+  IN_PROGRESS: { key: "in-progress", label: "В процессе" },
+  COMPLETED: { key: "completed", label: "Готово" },
+  TRASH: { key: "trash", label: "Корзина" },
 };
