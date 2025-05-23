@@ -32,7 +32,6 @@ export default class TasksModel extends Observable {
       this._notify(UpdateType.MINOR, createdTask);
       return createdTask;
     } catch (err) {
-      console.error("Ошибка при добавлении задачи на сервер:", err);
       throw err;
     }
   }
@@ -53,7 +52,6 @@ export default class TasksModel extends Observable {
         this._notify(UpdateType.UPDATE_TASK, task);
       } catch (err) {
         task.status = previousStatus;
-        console.error("Ошибка при обновлении статуса задачи:", err);
         throw err;
       }
     }
@@ -104,7 +102,6 @@ export default class TasksModel extends Observable {
       );
       this._notify(UpdateType.MINOR);
     } catch (err) {
-      console.error("Ошибка при очистке корзины:", err);
       throw err;
     }
   }
@@ -115,7 +112,6 @@ export default class TasksModel extends Observable {
       this.#boardtasks = tasks;
       this._notify(UpdateType.INIT);
     } catch (err) {
-      console.error("Ошибка при инициализации задач:", err);
       throw err;
     }
   }
